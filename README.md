@@ -1,5 +1,5 @@
 
-![Old Boards and Commissions Application Form](img/bc.png)
+![Old Boards and Commissions Application Form](img/bg.png)
 
 ![New Boards and Commissions Application Form](img/BC.png)
 
