@@ -48,7 +48,7 @@ React.js, Typescript, Next.js, Formik, Storybook, GraphQL, Jest, Percy framework
      but in Formik the only thing you would have to do is use a deconstructed function & add the functions like handleBlur, handleChange, and handleSubmit to pass to through certain properties.
      You don’t have to change the code just write the type compatible with the property.
 
-                 <TextInput
+                 `<TextInput
                      title="First Name"
                      name="firstName"
                      placeholder="First Name"
@@ -56,18 +56,20 @@ React.js, Typescript, Next.js, Formik, Storybook, GraphQL, Jest, Percy framework
                      onChange={handleChange}
                      error={touched.firstName && errors.firstName}
                      onBlur={handleBlur}
-                   />
+                   />`
 
   They even have cool props called errors and touched and used correctly when set up. If a field is visited (touched) when you set up your Yup validation, Yup validation is a object schema validation, when it is blurred it will display the error you created. Here is an example of the code:
 
-firstName: Yup.string()
-               .required('Your First Name Is Required!')
-               .min(2, 'Your First Name Needs To Be Valid’),
+                  `firstName: Yup.string()
+                           .required('Your First Name Is Required!')
+                           .min(2, 'Your First Name Needs To Be Valid’)`
 
 With firstName being the initialValue passed thru to Formik from my higher order component I created. It now knows that that TextInput.tsx is a text input field that is named “firstName” and it is a string that is required and has a minimal of 2 characters, if the field is touched ( error={touched.firstName && errors.firstName} )  then blurred ( {handleBlur} ) it will display the message created in the .min function. Or let’s say the touch and let’s say there was no onChange it will let you know that it is required as well.
- Just like with anything you do in React you will first start off with an "import React from 'react’;” as well as Formik, import { Formik } from 'formik’;
-       Once Formik is imported, for this app I had to create a better user experience by making a new component instance for the text inputs of the form as well as validation (Formik uses Yup for object schema validation. This being my first major React project I had grasped of the gist of Formik and what it needed to work.
- First, I had to pass the props to Formik in the TextInput.tsx. I thought it was simple as exporting extensions React.Component<Props> , but I also forgot I need to list the export interface so Formik knew the values of the props. This was the tough part because I didn’t understand the errors I was receiving like “this isn’t a property for this type” and making sure all the props were lined up across the board.
+Just like with anything you do in React you will first start off with an "import React from 'react’;” as well as Formik, import { Formik } from 'formik’;
+
+Once Formik is imported, for this app I had to create a better user experience by making a new component instance for the text inputs of the form as well as validation (Formik uses Yup for object schema validation. This being my first major React project I had grasped of the gist of Formik and what it needed to work.
+
+First, I had to pass the props to Formik in the TextInput.tsx. I thought it was simple as exporting extensions React.Component<Props> , but I also forgot I need to list the export interface so Formik knew the values of the props. This was the tough part because I didn’t understand the errors I was receiving like “this isn’t a property for this type” and making sure all the props were lined up across the board.
 
 
 
