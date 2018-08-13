@@ -33,7 +33,7 @@ React.js, Typescript, Next.js, Formik, Storybook, GraphQL, Jest, Percy framework
                   } else {
                     this.selectedCheckboxes.add(label);
                   }
-                  }``
+                  }`
 
                 `handleFormSubmit = formSubmitEvent => {
                  formSubmitEvent.preventDefault();
@@ -42,6 +42,8 @@ React.js, Typescript, Next.js, Formik, Storybook, GraphQL, Jest, Percy framework
                    console.log(checkbox, 'is selected.');
                  }
                 }`
+
+
 
      ...but in Formik the only thing you would have to do is use a deconstructed function and add the functions like handleBlur, handleChange, and handleSubmit to pass to through certain properties. You don’t have to change the code just write the type compatible with the property.
 
