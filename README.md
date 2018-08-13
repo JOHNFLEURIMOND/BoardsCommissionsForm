@@ -22,26 +22,27 @@ React.js, Typescript, Next.js, Formik, Storybook, GraphQL, Jest, Percy framework
 
   Being a high order component, you pass it a configuration and it injects property in your form. It tracks all fields that have been visited, what the form’s values are, and much more. Also, they all have the same key to handle the primitives unlike regular React code. The states are initialized by actually writing the callbacks like handleSubmit in the actual Formik code instead of writing it about the render( ) like in regular React. As shown in the code below. you would write something like this….
 
-  `class Application extends Component {
-  componentWillMount = () => {
-    this.selectedCheckboxes = new Set();
-  }
+                  `class Application extends Component {
+                  componentWillMount = () => {
+                  this.selectedCheckboxes = new Set();
+                  }`
 
-  toggleCheckbox = label => {
-    if (this.selectedCheckboxes.has(label)) {
-      this.selectedCheckboxes.delete(label);
-    } else {
-      this.selectedCheckboxes.add(label);
-    }
-  }
+                  `toggleCheckbox = label => {
+                  if (this.selectedCheckboxes.has(label)) {
+                    this.selectedCheckboxes.delete(label);
+                  } else {
+                    this.selectedCheckboxes.add(label);
+                  }
+                  }``
 
- handleFormSubmit = formSubmitEvent => {
-   formSubmitEvent.preventDefault();
+                `handleFormSubmit = formSubmitEvent => {
+                 formSubmitEvent.preventDefault();
 
-   for (const checkbox of this.selectedCheckboxes) {
-     console.log(checkbox, 'is selected.');
-   }
- }`
+                 for (const checkbox of this.selectedCheckboxes) {
+                   console.log(checkbox, 'is selected.');
+                 }
+                }`
+
      ...but in Formik the only thing you would have to do is use a deconstructed function and add the functions like handleBlur, handleChange, and handleSubmit to pass to through certain properties. You don’t have to change the code just write the type compatible with the property.
 
                  <TextInput
