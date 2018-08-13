@@ -45,7 +45,8 @@ React.js, Typescript, Next.js, Formik, Storybook, GraphQL, Jest, Percy framework
 
 
 
-     ...but in Formik the only thing you would have to do is use a deconstructed function and add the functions like handleBlur, handleChange, and handleSubmit to pass to through certain properties. You don’t have to change the code just write the type compatible with the property.
+     but in Formik the only thing you would have to do is use a deconstructed function & add the functions like handleBlur, handleChange, and handleSubmit to pass to through certain properties.
+     You don’t have to change the code just write the type compatible with the property.
 
                  <TextInput
                      title="First Name"
