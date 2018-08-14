@@ -19,7 +19,7 @@ That’s a lot of code,  which becomes redundant having to setState and binding 
 
 The states are initialized by actually writing the callbacks like handleSubmit in the actual Formik code instead of writing it about the render( ) like in regular React. As shown in the code below. you would write something like this….
 
-class Application extends Component {
+```class Application extends Component {
 componentWillMount = () => {
 this.selectedCheckboxes = new Set();
 }
@@ -39,9 +39,10 @@ for (const checkbox of this.selectedCheckboxes) {
  console.log(checkbox, 'is selected.');
 }
 }
-    ...but in Formik the only thing you would have to do is use a deconstructed function and add the functions like handleBlur, handleChange, and handleSubmit to pass it through certain properties. You don’t have to change the code just write the type compatible with the property. When writing in typescript, which is strict syntactical superset of JavaScript that has its own linter called TS Lint and is also designed to compile to JavaScript. Typescript An App.tsx is the file template that I had to used for my components.  Here is an example of how I would go about it in Formik:
+```
+    ...but in Formik the only thing you would have to do is use a deconstructed function and add the functions like handleBlur, handleChange, and handleSubmit to pass it through certain properties. You don’t have to change the code just write the type compatible with the property. When writing in typescript, which is strict syntactical superset of JavaScript that has its own linter called TS Lint and is also designed to compile to JavaScript with babel. Typescript An App.tsx is the file template that I had to used for my components.  Here is an example of how I would go about it in Formik:
 
-```return (
+``return (
 
  <div className="mn">
 
@@ -91,7 +92,8 @@ for (const checkbox of this.selectedCheckboxes) {
 
                  onBlur={handleBlur}
 
-               />)}```
+               />)}
+            ```
 
 
    My mentor said it best in their last medium article... "I had thrown John into a type-checking world without preparation. He fell victim to a paradox of guard rails: it can take more effort to deal with a checker’s “helpful” error messages than it would ever be to debug the problems it’s warning you against." (https://medium.com/innovation-and-technology/deciphering-typescripts-react-errors-8704cc9ef402)
@@ -111,7 +113,8 @@ They even have cool props called errors and touched and used correctly when set 
 
            .min(2, 'Your First Name Needs To Be Valid'),
 
-       })}```
+       })}
+       ```
 
 With firstName being the initialValue passed thru to Formik from my higher order component I created. It now knows that that TextInput.tsx is a text input field that is named “firstName” and it is a string that is required and has a minimal of 2 characters, if the field is touched ( error={touched.firstName && errors.firstName} )  then blurred ( {handleBlur} ) it will display the message created in the .min function. Or touched and there was no onChange it will let you know that it is required as well.
 
