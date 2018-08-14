@@ -14,12 +14,8 @@ React.js, Typescript, Next.js, Formik, Storybook, GraphQL, Jest, Percy framework
 
  My mentor said it best in their last medium article... "I had thrown John into a type-checking world without preparation. He fell victim to a paradox of guard rails: it can take more effort to deal with a checker’s “helpful” error messages than it would ever be to debug the problems it’s warning you against." (https://medium.com/innovation-and-technology/deciphering-typescripts-react-errors-8704cc9ef402)
 
-<<<<<<< HEAD
  TypeScript was giving me messages saying:
  `"Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<FormWithElement> & Readonly<{ children?: ReactNode...'. Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'Readonly<Props>'. Property 'title' is missing in type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...'`
-=======
- TypeScript was giving me messages saying "Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<FormWithElement> & Readonly<{ children?: ReactNode...'. Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'Readonly<Props>'. Property 'title' is missing in type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...'
->>>>>>> parent of 0897817... TypeScript,formik, textinput desciption done
 
  ....I was lost but I learned from my mentor that I had to first understand what the error trying to tell me and for this matter its saying Property 'title' is missing in type '{ name: string; placeholder: string; value: string;"" Because I had passed several props into a interface and title being one of them TypeScript picked that up and thru that error to make me aware that it should be.
 
