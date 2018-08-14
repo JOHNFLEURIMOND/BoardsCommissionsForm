@@ -138,13 +138,13 @@ onChange: any;
 onBlur: any;
 
 }
-``
+```
 
 This was the tough part because I didn’t understand the errors I was receiving like “this isn’t a property for this type” and making sure all the props were lined up across the board meaning the main component, stories and the actual component instance I wrote the props in!
 
 Going on to the next component that I which felt ten times harder than the TextInput component I created to be passed thru to the Formik function. Just like the other component I had to make sure I passed props correctly so I exported a `title:string` in the interface for that instance, I had to make sure It was in the stories
 
-``storiesOf('CommentInput', module).add('default', () => (
+```storiesOf('CommentInput', module).add('default', () => (
   <CommentInput
     name="comments"
     placeholder="Other Comments"
@@ -156,7 +156,7 @@ Going on to the next component that I which felt ten times harder than the TextI
 ```
  (so you can visualize different states of your UI components and develop them interactively. Storybook is a UI development environment for your UI components.) as well as making sure your main component has all the right properties and types you wrote before.
 
-``renderCommission(
+```renderCommission(
     commission: Commission,
     checkedCommissionIds: string[],
     push,
@@ -189,7 +189,7 @@ Going on to the next component that I which felt ten times harder than the TextI
       </li>
     );
   }
-``
+```
 
 In this renderCommission() function I had to pass in deconstructed props so you are able to use them. `Commission:Commission` is actually from a listen of boards and commission names we are fetching with Next.js to be used in this app. So for each commission map I want to map it with a checkbox but with Formik has a component that helps with common array and list manipulation and it is called FieldArray. You can also iterate through an array of objects, by following a convention of object[index]property
 
