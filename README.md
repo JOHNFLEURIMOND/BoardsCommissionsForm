@@ -153,7 +153,7 @@ Going on to the next component that I which felt ten times harder than the TextI
     onBlur=""
   />
 ));
-``
+```
  (so you can visualize different states of your UI components and develop them interactively. Storybook is a UI development environment for your UI components.) as well as making sure your main component has all the right properties and types you wrote before.
 
 ``renderCommission(
@@ -189,11 +189,11 @@ Going on to the next component that I which felt ten times harder than the TextI
       </li>
     );
   }
-```
+``
 
 In this renderCommission() function I had to pass in deconstructed props so you are able to use them. `Commission:Commission` is actually from a listen of boards and commission names we are fetching with Next.js to be used in this app. So for each commission map I want to map it with a checkbox but with Formik has a component that helps with common array and list manipulation and it is called FieldArray. You can also iterate through an array of objects, by following a convention of object[index]property
 
-`<FieldArray
+```<FieldArray
   name="commissionIds"
   render={({ push, remove }) => (
     <ul>
@@ -214,9 +214,9 @@ In this renderCommission() function I had to pass in deconstructed props so you 
     </ul>
   )}
 />
-`
+```
 In this Formik component in the list element tag, the render method you will see that I am using the same renderCommission you see above but I mapped that with the variable I created for commissions WithoutOpen Seats, Commissions already being fetched I filtered it and used it like so there will be one set of checkboxes that will show without open seats and one with, here is a example of how i set up those variables:
-`  render() {
+``render() {
     const { commissions } = this.props;
 
     const commissionsWithoutOpenSeats = commissions.filter(
@@ -224,17 +224,18 @@ In this Formik component in the list element tag, the render method you will see
     );
     const commissionsWithOpenSeats = commissions.filter(
       commission => commission.openSeats > 0
-    );`
+    );```
 
  The reason why push and remove methods are in that render is because   I listed that in the deconstructed function above when I stepped the onChange handle so that Formik knew that there was an onChange happening I had to pass it here as well.
 
- `onChange={() => {
+ ```onChange={() => {
    if (!checked) {
      push(commission.id.toString());
    } else {
      remove(checkedCommissionIds.indexOf(commission.id.toString()));
    }
- }}`
+ }}
+ ```
 
 Because commissions.id is a number type I had to use the method .toString() to convert it and I had to push that to make it have the checked attribute on the checkboxes. On the else was tricky because I thought I could just remove the commission.id.toStrings but I had to use indexOf() with the commission.id.toString() to remove it. I also had to to put handleBlur so it could display the message because that wasn’t a prop that was passed thru.
 
