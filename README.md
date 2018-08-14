@@ -236,6 +236,7 @@ In this Formik component in the list element tag, the render method you will see
    }
  }}`
 
+Because commissions.id is a number type I had to use the method .toString() to convert it and I had to push that to make it have the checked attribute on the checkboxes. On the else was tricky because I thought I could just remove the commission.id.toStrings but I had to use indexOf() with the commission.id.toString() to remove it. I also had to to put handleBlur so it could display the message because that wasn’t a prop that was passed thru. 
 
 
 ## Optimizations
