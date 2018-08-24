@@ -1,7 +1,7 @@
 
 ![Old Boards and Commissions Application Form](img/bc.png)
 
-![New Boards and Commissions Application Form](img/BG.png)
+![New Boards and Commissions Application Form](commissions-copy/img/BG.png)
 
 # My Awesome Project
 After graduating my bootcamp with Resilient Coders, I landed a internship engineering for the City of Boston Digital Team and their goal in this application was to bring the existing cityofboston.gov boards and commissions webpage (HTML, CSS, and Javascript) onto boston.gov(React.js, Next.js). My task in this project was to improve the existing functionality and user experience for the applications form.
