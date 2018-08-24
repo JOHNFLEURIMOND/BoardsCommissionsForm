@@ -9,17 +9,18 @@ After graduating my bootcamp with Resilient Coders, I landed a internship engine
 
 
 ## How It's Made ## Lessons Learned:
-In this boards and commission application form I am creating it with React and using a NPM package called Formik.  Formik is a less painful way of making forms with event callback functions like (handleBlur, handleSubmit), setup validation, and easy error handling.
+In this boards and commission application form I am writing in React.js and using an NPM package called Formik.  Formik is a less painful way of making forms with event callback functions like (handleBlur, handleSubmit), setup validation, and easy error handling.
 
-In regular React code, lets say you have to make a text input field, I would have to use two-way data binding, use change/call back handler, use this.setState for your change/call back handler and where you would like to target exactly for the state to change and pass it to the input and every input after that.
+In regular React code, let’s say you have to make a input, you would have to use two-way data binding. If you want to use change/call back handler, you would have to use this.setState for your change/call back handler and wherever you would like to target exactly for the state to change and pass it to the input and every input after that.
 
-That’s a lot of code,  which becomes redundant having to setState and binding for things like handleChange, handleSubmit, handleBlur and other handlers, but Formik has some of these and does all the heavy lifting.
+That’s a lot of code! This becomes redundant having to setState and binding for things like handleChange, handleSubmit, handleBlur and other handlers, but Formik streamlines this process
+ and does all the heavy lifting.
 
-  Being a high order component, you pass it a configuration and it injects properties in your form. It tracks all fields that have been visited, what the form’s values are, and much more. Also, they all have the same key to handle the primitives unlike regular React code.
+Being a high order component, you pass it a configuration, some props and it injects the properties into your form. It tracks all fields that have been visited, what the form’s values are, and much more. Also, they all have the same key to handle the primitives unlike regular React code.
 
-The states are initialized by actually writing the callbacks like handleSubmit in the actual Formik code instead of writing it about the render( ) like in regular React. As shown in the code below. you would write something like this….
+The states are initialized by actually writing the callbacks like handleSubmit in the actual Formik code instead of writing it in the render( ) like in a normal  React Component. As shown in the code below, you would write something like this….
 
-class Application extends Component {
+```class Application extends Component {
 componentWillMount = () => {
 this.selectedCheckboxes = new Set();
 }
@@ -38,8 +39,8 @@ formSubmitEvent.preventDefault();
 for (const checkbox of this.selectedCheckboxes) {
  console.log(checkbox, 'is selected.');
 }
-}
-    ...but in Formik the only thing you would have to do is add the the props to the decontructed render method like handleBlur, handleChange, and handleSubmit to pass it through certain properties. You don’t have to change the code just write the type compatible with the property. Here is an example of how I would go about it in Formik:
+}```
+    ...but in Formik the only thing you would have to do is use a deconstructed function and add the functions like handleBlur, handleChange, and handleSubmit to pass it through certain properties. You don’t have to change the code just write the type compatible with the property. When writing in typescript, which is strict syntactical superset of JavaScript that has its own linter called TS Lint and is also designed to compile to JavaScript. Typescript An App.tsx is the file template that I had to used for my components.  Here is an example of how I would go about it in Formik:
 
 ```return (
 
@@ -91,20 +92,19 @@ for (const checkbox of this.selectedCheckboxes) {
 
                  onBlur={handleBlur}
 
-               />)}
-               ```
+               />)}```
 
-TypeScript was giving me messages saying:
-`"Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<FormWithElement> & Readonly<{ children?: ReactNode...'. Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'Readonly<Props>'. Property 'title' is missing in type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro…'`
-
-When writing in typescript, which is strict syntactical superset of JavaScript that has its own linter called TS Lint and is also designed to compile to JavaScript. Typescript An App.tsx is the file template that I had to used for my components.
-....I was lost but I learned from my mentor that I had to first understand what the error was trying to tell me and break it down for this case, it was saying Property 'title' is missing in type '{ name: string; placeholder: string; value: string;"" Because I had passed several props into a interface and title being one of them TypeScript picked up and thru that error to make me aware that it should be in there. Here is an example of Formik code
 
    My mentor said it best in their last medium article... "I had thrown John into a type-checking world without preparation. He fell victim to a paradox of guard rails: it can take more effort to deal with a checker’s “helpful” error messages than it would ever be to debug the problems it’s warning you against."
 
+TypeScript was giving me messages saying:
+```"Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<FormWithElement> & Readonly<{ children?: ReactNode...'. Type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro...' is not assignable to type 'Readonly<Props>'. Property 'title' is missing in type '{ name: string; placeholder: string; value: string; onChange: (e: ChangeEvent<any>) => void; erro…'```
+
+....I was lost but I learned from my mentor that I had to first understand what the error was trying to tell me and break it down for this case, it was saying Property 'title' is missing in type '{ name: string; placeholder: string; value: string;"" Because I had passed several props into a interface and title being one of them TypeScript picked up and thru that error to make me aware that it should be in there. Here is an example of Formik code
+
 They even have cool props called errors and touched and used correctly when set up if a field is visited (touched) when you set up your Yup for object schema validation. It has an API that's pretty similar Joi / React PropTypes and this is a complementary package Formik) when it is blurred it will display the error you created. Here is an example of the code:
 
-``validationSchema={Yup.object().shape({
+```validationSchema={Yup.object().shape({
 
          firstName: Yup.string()
 
@@ -119,7 +119,7 @@ With firstName being the initialValue passed thru to Formik from my higher order
 First, I had to pass the props to Formik in the TextInput.tsx. I thought it was simple as exporting extensions React.Component<Props> , but I also forgot I need to list the export interface so Formik knew the values of the props.
 
 
-``export interface Props {
+```export interface Props {
 
 name: string;
 
@@ -137,24 +137,26 @@ onChange: any;
 
 onBlur: any;
 
-}
-```
+}```
 
 This was the tough part because I didn’t understand the errors I was receiving like “this isn’t a property for this type” and making sure all the props were lined up across the board meaning the main component, stories and the actual component instance I wrote the props in!
 
 Going on to the next component that I which felt ten times harder than the TextInput component I created to be passed thru to the Formik function. Just like the other component I had to make sure I passed props correctly so I exported a `title:string` in the interface for that instance, I had to make sure It was in the stories
 
-``storiesOf('CommentInput', module).add('default', () => (
+```storiesOf('CommentInput', module).add('default', () => (
   <CommentInput
     name="comments"
     placeholder="Other Comments"
     value="comments"
     onChange=""
-    onBlur=""  />));
-    ``
+    onBlur=""
+  />
+));```
+
+
  (so you can visualize different states of your UI components and develop them interactively. Storybook is a UI development environment for your UI components.) as well as making sure your main component has all the right properties and types you wrote before.
 
-``renderCommission(
+```renderCommission(
     commission: Commission,
     checkedCommissionIds: string[],
     push,
@@ -185,10 +187,10 @@ Going on to the next component that I which felt ten times harder than the TextI
           checked={checked}
         />
       </li>
-    ); }
-    ```
+    );
+  }```
 
-In this renderCommission() function I had to pass in props so you are able to use them. `Commission:Commission` is actually from a listen of boards and commission names we are fetching with Next.js to be used in this app. So for each commission map I want to map it with a checkbox but with Formik has a component that helps with common array and list manipulation and it is called FieldArray. You can also iterate through an array of objects, by following a convention of object[index]property
+In this renderCommission() function I had to pass in deconstructed props so you are able to use them. `Commission:Commission` is actually from a listen of boards and commission names we are fetching with Next.js to be used in this app. So for each commission map I want to map it with a checkbox but with Formik has a component that helps with common array and list manipulation and it is called FieldArray. You can also iterate through an array of objects, by following a convention of object[index]property
 
 ```<FieldArray
   name="commissionIds"
@@ -210,10 +212,9 @@ In this renderCommission() function I had to pass in props so you are able to us
       </div>
     </ul>
   )}
-/>
-```
+/>```
 
-In this Formik component in the list element tag, the render method you will see that I am using the same renderCommission you see above but I mapped that with the variable I created for commissions WithoutOpen Seats, Commissions already being fetched I filtered it and used it so there will be one set of checkboxes that will show without open seats and one with, here is a example of how i set up those variables:
+In this Formik component in the list element tag, the render method you will see that I am using the same renderCommission you see above but I mapped that with the variable I created for commissions WithoutOpen Seats, Commissions already being fetched I filtered it and used it like so there will be one set of checkboxes that will show without open seats and one with, here is a example of how i set up those variables:
 ``render() {
     const { commissions } = this.props;
 
@@ -222,22 +223,19 @@ In this Formik component in the list element tag, the render method you will see
     );
     const commissionsWithOpenSeats = commissions.filter(
       commission => commission.openSeats > 0
-    );
-    ```
+    );```
 
- the reason why push and remove methods are in that render is because   I listed that in the function above when I stepped the onChange handle so that Formik knew that there was an onChange happening I had to pass it here as well. Here is what it looks like:
+ The reason why push and remove methods are in that render is because   I listed that in the deconstructed function above when I stepped the onChange handle so that Formik knew that there was an onChange happening I had to pass it here as well.
 
- `onChange={() => {
+ ```onChange={() => {
    if (!checked) {
      push(commission.id.toString());
    } else {
      remove(checkedCommissionIds.indexOf(commission.id.toString()));
    }
- }}`
+ }}```
 
-Because commissions.id is a number type I had to use the method .toString() to convert it and I had to push that to make it have the checked attribute on the checkboxes. On the else was tricky because I thought I could just remove the commission.id.toStrings but I had to use indexOf() with the commission.id.toString() to remove it. I also had to to put handleBlur so it could display the message because that wasn’t a prop that was passed thru.
-
-
+Because {commissions.id} is a number type I had to use the method .toString() to convert it and I had to push that to make it have the checked attribute on the checkboxes. On the else was tricky because I thought I could just remove the commission.id.toStrings but I had to use indexOf() with the commission.id.toString() to remove it. I also had to to put handleBlur so it could display the message because that wasn’t a prop that was passed thru.
 
 ## Optimizations
 I have to finish this Read.me
