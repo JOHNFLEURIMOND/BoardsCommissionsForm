@@ -120,7 +120,7 @@ With firstName being the initialValue passed thru to Formik from my higher order
 First, I had to pass the props to Formik in the TextInput.tsx. I thought it was simple as exporting extensions React.Component<Props> , but I also forgot I need to list the export interface so Formik knew the values of the props.
 
 
-``export interface Props {
+```export interface Props {
 
 name: string;
 
@@ -138,8 +138,7 @@ onChange: any;
 
 onBlur: any;
 
-}
-```
+}```
 
 This was the tough part because I didn’t understand the errors I was receiving like “this isn’t a property for this type” and making sure all the props were lined up across the board meaning the main component, stories and the actual component instance I wrote the props in!
 
