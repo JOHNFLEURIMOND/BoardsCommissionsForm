@@ -241,8 +241,7 @@ In this Formik component in the list element tag, the render method you will see
 
 Because {commissions.id} is a number type I had to use the method .toString() to convert it and I had to push that to make it have the checked attribute on the checkboxes. On the else was tricky because I thought I could just remove the commission.id.toStrings but I had to use indexOf() with the commission.id.toString() to remove it. I also had to to put handleBlur so it could display the message because that wasn’t a prop that was passed thru.
 
-## Optimizations
-I have to finish this Read.me
+.....
 
 ## portfolio:
 
@@ -250,12 +249,5 @@ I have to finish this Read.me
 
 
 
-## Installation
 
-1. Clone repo
-2. run `yarn install`
-
-## Usage
-
-1. run `yarn dev`
 2. Navigate to `localhost:3000/commissions/apply`
